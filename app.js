@@ -23,11 +23,18 @@ mongoose.connect(process.env.MONGO_URI).then(()=> {
     console.log("database is connected")
 })
 
+const corsOptions = {
+  origin: 'https://ecommerce-website-2nd-frontend-boom.vercel.app', // Allow only your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
 //middlewares
  app.use(morgan("dev"));
  app.use(cookieParser());
- app.use(cors());
- app.use("/webhook", webhookRoute);
+//  app.use(cors());
+app.use(cors(corsOptions)); 
+app.use("/webhook", webhookRoute);
  app.use(bodyParser.json());
     // {
 //   origin: "https://ecommerce-frontend-oyzc.vercel.app", // your frontend URL
