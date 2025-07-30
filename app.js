@@ -33,7 +33,8 @@ const corsOptions = {
  app.use(morgan("dev"));
  app.use(cookieParser());
 //  app.use(cors());
-app.use(cors(corsOptions)); 
+// app.use(cors(corsOptions)); 
+app.use(cors({ origin: '*' }));
 app.use("/webhook", webhookRoute);
  app.use(bodyParser.json());
     // {
