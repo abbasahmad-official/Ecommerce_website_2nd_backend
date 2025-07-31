@@ -32,7 +32,7 @@ exports.create_checkout_session = async (req, res) => {
 
     // Safer logging
     // console.log("Received Items:", items);
-    console.log("Received Order:", order.products);
+    // console.log("Received Order:", order.products);
 
         const metadata = {
          products:JSON.stringify(order.products), 
@@ -61,7 +61,7 @@ exports.create_checkout_session = async (req, res) => {
       line_items,
       mode: 'payment',
       metadata,
-      success_url: `http://localhost:5173/success`,
+      success_url: `https://ecommerce-website-2nd-frontend-boom.vercel.app/success`,
       // success_url: `http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}&address=${encodedAddress}`,
       cancel_url: 'http://localhost:5173/cancel',
     });
